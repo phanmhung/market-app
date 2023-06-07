@@ -1,9 +1,9 @@
-import { createEffect, createEvent, createStore } from 'effector';
+import { createEffect, createEvent, createStore, combine } from 'effector';
 import { Product } from '../common/types';
 
 export const fetchProducts = createEffect<void, Product[]>({
   handler: async () => {
-    const response = await fetch('https://dummyjson.com/products?limit=10&skip=10&select=title,price,thumbnail,category');
+    const response = await fetch('https://dummyjson.com/products?select=title,price,thumbnail,category');
     const data = await response.json();
     return data.products;
   },
@@ -27,13 +27,25 @@ export const setSearchQuery = createEvent<string>();
 export const setSelectedCategory = createEvent<string>();
 export const setDisplayCount = createEvent<number>();
 
-export const $filteredProducts = $products
-  .map((products) => {
+// Create stores for search query, selected category, and display count
+export const $searchQuery = createStore<string>('')
+  .on(setSearchQuery, (_, searchQuery) => searchQuery);
+
+export const $selectedCategory = createStore<string>('')
+  .on(setSelectedCategory, (_, selectedCategory) => selectedCategory);
+
+export const $displayCount = createStore<number>(10)
+  .on(setDisplayCount, (_, displayCount) => displayCount);
+
+// Combine the relevant stores to create a derived store for filtered products
+export const $filteredProducts = combine(
+  $products,
+  $searchQuery,
+  $selectedCategory,
+  $displayCount,
+  (products, searchQuery, selectedCategory, displayCount) => {
     // Apply filtering logic based on search query, selected category, and display count
     // Modify this logic according to your requirements
-    const searchQuery:string = ''; // Replace with $searchQuery from SearchBox component
-    const selectedCategory = ''; // Replace with $selectedCategory from CategorySelect component
-    const displayCount = 10; // Replace with $displayCount from NumberDisplay component
 
     let filteredProducts = products;
 
@@ -50,7 +62,8 @@ export const $filteredProducts = $products
     filteredProducts = filteredProducts.slice(0, displayCount);
 
     return filteredProducts;
-  });
+  }
+);
 
 // Fetch products and categories when component mounts
 export const initialize = createEvent<void>();
@@ -59,6 +72,9 @@ initialize.watch(() => {
   fetchCategories();
 });
 
-// Initialize the store when the initialize event occurs
+// Initialize the stores when the initialize event occurs
+$searchQuery.reset(initialize);
+$selectedCategory.reset(initialize);
+$displayCount.reset(initialize);
 $products.reset(initialize);
 $categories.reset(initialize);

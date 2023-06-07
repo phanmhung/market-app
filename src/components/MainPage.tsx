@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from 'react';
 
-
 import styles from '@/styles/MainPage.module.scss';
 import { useStore } from 'effector-react';
-import { $categories, $filteredProducts, $products, fetchCategories, fetchProducts, setDisplayCount, setSearchQuery, setSelectedCategory } from '../utils/products';
-import Header from './Header';
-import SearchBox from './SearchBox';
+import {
+  $categories,
+  $filteredProducts,
+  fetchCategories,
+  fetchProducts,
+  setDisplayCount,
+  setSearchQuery,
+  setSelectedCategory
+} from '../utils/products';
 import CategorySelect from './CategorySelect';
+import Header from './Header';
 import NumberDisplay from './NumberDisplay';
+import SearchBox from './SearchBox';
 
 interface MainPageProps {
   darkMode: boolean;
@@ -15,14 +22,13 @@ interface MainPageProps {
 }
 
 const MainPage: React.FC<MainPageProps> = ({ darkMode, toggleDarkMode }) => {
-  const products = useStore($products);
-  console.log("🚀 ~ file: MainPage.tsx:19 ~ products:", products)
   const categories = useStore($categories);
   const filteredProducts = useStore($filteredProducts);
-  console.log("🚀 ~ file: MainPage.tsx:21 ~ filteredProducts:", filteredProducts)
-  console.log("🚀 ~ file: MainPage.tsx:21 ~ ilteredProducts :", filteredProducts )
-  
-  
+ 
+  console.log(
+    '🚀 ~ file: MainPage.tsx:21 ~ ilteredProducts :',
+    filteredProducts
+  );
 
   const [searchQuery, setSearchQueryState] = useState('');
   const [selectedCategory, setSelectedCategoryState] = useState('');
@@ -41,6 +47,7 @@ const MainPage: React.FC<MainPageProps> = ({ darkMode, toggleDarkMode }) => {
   const handleDisplayCountChange = (value: number) => {
     setDisplayCountState(value);
     setDisplayCount(value);
+
   };
 
   // Fetch products when component mounts
@@ -51,27 +58,43 @@ const MainPage: React.FC<MainPageProps> = ({ darkMode, toggleDarkMode }) => {
 
   return (
     <div className={darkMode ? styles.darkContainer : styles.lightContainer}>
-      <Header title="Market" darkMode={darkMode} onDarkModeToggle={toggleDarkMode} />
+      <Header
+        title="Market"
+        darkMode={darkMode}
+        onDarkModeToggle={toggleDarkMode}
+      />
       <div className={styles.mainContent}>
         <div className={styles.searchBox}>
           <SearchBox value={searchQuery} onChange={handleSearchChange} />
         </div>
         <div className={styles.categorySelect}>
-          <CategorySelect categories={categories} value={selectedCategory} onSelect={handleCategorySelect} />
+          <CategorySelect
+            categories={categories}
+            value={selectedCategory}
+            onSelect={handleCategorySelect}
+          />
         </div>
         <div className={styles.numberDisplay}>
-          <NumberDisplay value={displayCount} onChange={handleDisplayCountChange} />
+          <NumberDisplay
+            value={displayCount}
+            onChange={handleDisplayCountChange}
+          />
         </div>
         {/* Render products here */}
-        
+
         {filteredProducts.map((product) => (
           <div key={product.id} className={styles.productItem}>
-            <img src={product.thumbnail} alt={product.title} className={styles.productImage}/>
+            <div className={styles.productImageWrapper}>
+              <img
+                src={product.thumbnail}
+                alt={product.title}
+                className={styles.productImage}
+              />
+            </div>
             <h3 className={styles.productTitle}>{product.title}</h3>
             <p className={styles.productPrice}>$ {product.price}</p>
           </div>
         ))}
-      
       </div>
     </div>
   );
