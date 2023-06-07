@@ -1,0 +1,16 @@
+// SearchBox.module.scss
+
+.searchBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  

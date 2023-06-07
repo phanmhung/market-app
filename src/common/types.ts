@@ -1,14 +1,13 @@
 
-// Define the Product type
-type Product = {
+export type Product = {
     id: string;
     title: string;
     price: number;
-    
+    category: string;
+    thumbnail: string;
   };
   
-  // Define the Category type
-type Category = {
+export type Category = {
     id: string;
     name: string;
     

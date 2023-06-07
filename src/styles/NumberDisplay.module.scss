@@ -1,0 +1,47 @@
+// NumberDisplay.module.scss
+
+.numberDisplay {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .selectedValue {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .iconOpen {
+    transform: rotate(180deg);
+  }
+  
+  .iconClosed {
+    transform: rotate(0deg);
+  }
+  
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 8px;
+    padding: 8px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    list-style-type: none;
+    z-index: 1;
+  }
+  
+  .dropdown li {
+    padding: 4px 8px;
+    cursor: pointer;
+  }
+  
+  .dropdown li:hover {
+    background-color: #f2f2f2;
+  }
+  
