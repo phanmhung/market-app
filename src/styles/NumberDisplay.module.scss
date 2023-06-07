@@ -2,24 +2,33 @@
 
 .numberDisplay {
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    border: 1px solid #D7D7D7;
+    border-radius: 4px;
+    height: 48px;
+    color: #868686;
   }
   
   .selectedValue {
     display: flex;
     align-items: center;
     padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
     cursor: pointer;
   }
   
   .iconOpen {
-    transform: rotate(180deg);
+    transform: rotate(180deg) translateY(50%);
+  position: absolute;
+  top: 50%;
+    right: 10px;
   }
   
   .iconClosed {
-    transform: rotate(0deg);
+    transform: rotate(0deg) translateY(-50%);
+    position: absolute;
+    top: 50%;
+      right: 10px;
   }
   
   .dropdown {
@@ -30,7 +39,7 @@
     margin-top: 8px;
     padding: 8px;
     background-color: #fff;
-    border: 1px solid #ccc;
+    border: 1px solid #D7D7D7;
     border-radius: 4px;
     list-style-type: none;
     z-index: 1;

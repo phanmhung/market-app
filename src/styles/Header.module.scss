@@ -1,12 +1,16 @@
 /* styles/Header.module.scss */
 
 .header {
-    display: flex;
+    
+    
+    border-bottom: 1px solid #E1E1E1;
+    .headerContainer{
+      display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 360px;
-    padding-right: 360px;
-    border-bottom: 1px solid #E1E1E1;
+      max-width: 1200px;
+    margin: 0 auto;
+    }
   }
   
   .title {

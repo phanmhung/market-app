@@ -12,10 +12,12 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ title, onDarkModeToggle }) => {
   return (
     <header className={styles.header}>
-      <h1 className={styles.title}>{title}</h1>
-      <button className={styles.darkModeButton} onClick={onDarkModeToggle}>
-        Dark Mode
-      </button>
+      <div className={styles.headerContainer}>
+        <h1 className={styles.title}>{title}</h1>
+        <button className={styles.darkModeButton} onClick={onDarkModeToggle}>
+          Dark Mode
+        </button>
+      </div>
     </header>
   );
 };

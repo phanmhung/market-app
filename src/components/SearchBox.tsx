@@ -2,6 +2,7 @@
 
 import React from 'react';
 import styles from '@/styles/SearchBox.module.scss';
+import { RiSearchLine } from 'react-icons/ri';
 
 interface SearchBoxProps {
   value: string;
@@ -18,10 +19,11 @@ const SearchBox: React.FC<SearchBoxProps> = ({ onChange }) => {
     <div className={styles.searchBox}>
       <input
         type="text"
-        placeholder="Search..."
+        placeholder="Search"
         className={styles.input}
         onChange={handleInputChange}
       />
+      <RiSearchLine className={styles.searchIcon} />
     </div>
   );
 };

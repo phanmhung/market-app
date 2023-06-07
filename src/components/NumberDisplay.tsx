@@ -11,14 +11,16 @@ interface NumberDisplayProps {
 
 const NumberDisplay: React.FC<NumberDisplayProps> = ({ onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState('');
+  const [selectedValue, setSelectedValue] = useState(10);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
 
   const handleValueSelect = (value: string) => {
-    setSelectedValue(value);
+    // string to number
+    
+    setSelectedValue(Number(value));
     onChange(Number(value));
     setIsOpen(false);
   };
