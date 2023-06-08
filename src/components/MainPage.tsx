@@ -15,9 +15,6 @@ import CategorySelect from './CategorySelect';
 import Header from './Header';
 import NumberDisplay from './NumberDisplay';
 import SearchBox from './SearchBox';
-import { $darkMode } from '../utils/themes';
-
-
 
 const MainPage: React.FC = () => {
   const categories = useStore($categories);
