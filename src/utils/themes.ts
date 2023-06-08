@@ -6,4 +6,4 @@ export const $darkMode = createStore<boolean>(false)
     document.documentElement.setAttribute('data-theme', state ?'light':'dark');
     return !state;
   })
-  
+  document.documentElement.setAttribute('data-theme', 'light');

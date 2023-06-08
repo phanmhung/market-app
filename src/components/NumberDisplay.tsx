@@ -1,9 +1,8 @@
 // NumberDisplay.tsx
 
-import React, { useState } from 'react';
-import { FaChevronDown } from 'react-icons/fa';
+import dropdownSvg from '@/assets/ArrowDropDownFilled.svg';
 import styles from '@/styles/NumberDisplay.module.scss';
-
+import React, { useState } from 'react';
 interface NumberDisplayProps {
     value:number;
   onChange: (value: number) => void;
@@ -29,7 +28,7 @@ const NumberDisplay: React.FC<NumberDisplayProps> = ({ onChange }) => {
     <div className={styles.numberDisplay}>
       <div className={styles.selectedValue} onClick={handleToggle}>
         <span>{selectedValue || 'Select value'}</span>
-        <FaChevronDown className={isOpen ? styles.iconOpen : styles.iconClosed} />
+        <img src={dropdownSvg} className={isOpen ? styles.iconOpen : styles.iconClosed} />
       </div>
       {isOpen && (
         <ul className={styles.dropdown}>

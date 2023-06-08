@@ -1,9 +1,9 @@
 // CategorySelect.tsx
 
 import React, { useState } from 'react';
-import { FaChevronDown } from 'react-icons/fa';
-import styles from '@/styles/CategorySelect.module.scss';
 
+import styles from '@/styles/CategorySelect.module.scss';
+import dropdownSvg from '@/assets/ArrowDropDownFilled.svg';
 interface CategorySelectProps {
   value: string;
   categories: string[];
@@ -28,7 +28,7 @@ const CategorySelect: React.FC<CategorySelectProps> = ({ categories, onSelect })
     <div className={styles.categorySelect}>
       <div className={styles.selectedCategory} onClick={handleToggle}>
         <span>{selectedCategory || 'Select a category'}</span>
-        <FaChevronDown className={isOpen ? styles.iconOpen : styles.iconClosed} />
+        <img src={dropdownSvg} className={isOpen ? styles.iconOpen : styles.iconClosed} />
       </div>
       {isOpen && (
         <ul className={styles.dropdown}>
