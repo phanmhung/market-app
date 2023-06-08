@@ -1,0 +1,56 @@
+.themeSwitch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: #17161C;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
+  border: none;
+  &.dark {
+    background-color: #C2C2C2;
+    .icon {
+      &.sun {
+        opacity: 1;
+      }
+
+      &.moon {
+        opacity: 0;
+      }
+    }
+  }
+
+  .iconContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .icon {
+    padding: 2px 4px;
+    transition: opacity 0.3s ease;
+
+    &.sun {
+      opacity: 0;
+    }
+
+    &.moon {
+      opacity: 1;
+    }
+  }
+
+  .circle {
+    position: absolute;
+    left: 0px;
+    width: 22px;
+    height: 22px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+
+    &.dark {
+      transform: translateX(32px);
+      background-color: white;
+    }
+  }
+}

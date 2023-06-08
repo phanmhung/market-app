@@ -24,11 +24,6 @@ interface MainPageProps {
 const MainPage: React.FC<MainPageProps> = ({ darkMode, toggleDarkMode }) => {
   const categories = useStore($categories);
   const filteredProducts = useStore($filteredProducts);
- 
-  console.log(
-    '🚀 ~ file: MainPage.tsx:21 ~ ilteredProducts :',
-    filteredProducts
-  );
 
   const [searchQuery, setSearchQueryState] = useState('');
   const [selectedCategory, setSelectedCategoryState] = useState('');
@@ -61,7 +56,6 @@ const MainPage: React.FC<MainPageProps> = ({ darkMode, toggleDarkMode }) => {
       <Header
         title="Market"
         darkMode={darkMode}
-        onDarkModeToggle={toggleDarkMode}
       />
       <div className={styles.mainContent}>
         <div className={styles.searchBox}>

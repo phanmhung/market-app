@@ -1,22 +1,23 @@
 // components/Header.tsx
 
-import React from 'react';
 import styles from '@/styles/Header.module.scss';
+import React from 'react';
+import ThemeSwitch from '../shared/Switch/ThemeSwitch';
 
 interface HeaderProps {
   title: string;
   darkMode: boolean;
-  onDarkModeToggle: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ title, onDarkModeToggle }) => {
+const Header: React.FC<HeaderProps> = ({ title}) => {
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
         <h1 className={styles.title}>{title}</h1>
-        <button className={styles.darkModeButton} onClick={onDarkModeToggle}>
-          Dark Mode
-        </button>
+       
+
+        <ThemeSwitch />
+        
       </div>
     </header>
   );
