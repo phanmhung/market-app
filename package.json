@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage":"https://phanmhung.github.io/martket-app",
+  "homepage": "https://phanmhung.github.io/martket-app",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -30,10 +30,8 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
-    "gh-pages": "^5.0.0",
     "sass": "^1.62.1",
     "typescript": "^5.0.2",
     "vite": "^4.3.9"
   }
-  
 }
