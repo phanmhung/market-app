@@ -6,10 +6,10 @@ import ThemeSwitch from '../shared/Switch/ThemeSwitch';
 
 interface HeaderProps {
   title: string;
-  darkMode: boolean;
 }
 
 const Header: React.FC<HeaderProps> = ({ title}) => {
+  
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>

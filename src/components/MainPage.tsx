@@ -15,15 +15,14 @@ import CategorySelect from './CategorySelect';
 import Header from './Header';
 import NumberDisplay from './NumberDisplay';
 import SearchBox from './SearchBox';
+import { $darkMode } from '../utils/themes';
 
-interface MainPageProps {
-  darkMode: boolean;
-  toggleDarkMode: () => void;
-}
 
-const MainPage: React.FC<MainPageProps> = ({ darkMode, toggleDarkMode }) => {
+
+const MainPage: React.FC = () => {
   const categories = useStore($categories);
   const filteredProducts = useStore($filteredProducts);
+  
 
   const [searchQuery, setSearchQueryState] = useState('');
   const [selectedCategory, setSelectedCategoryState] = useState('');
@@ -52,10 +51,9 @@ const MainPage: React.FC<MainPageProps> = ({ darkMode, toggleDarkMode }) => {
   }, []);
 
   return (
-    <div className={darkMode ? styles.darkContainer : styles.lightContainer}>
+    <div className={styles.lightContainer}>
       <Header
         title="Market"
-        darkMode={darkMode}
       />
       <div className={styles.mainContent}>
         <div className={styles.searchBox}>

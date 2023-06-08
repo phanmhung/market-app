@@ -2,22 +2,43 @@
   font-family: Montserrat, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color: rgba(255, 255, 255, 0.87);
-  background-color: #F5F5F5;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+html[data-theme='light'] {
+  --background-color: #F5F5F5;
+ 
+  --title-color: #444444;
+  --placeholder-color:#868686;
+  
+  --border-product-color:#D7D7D7;
+  --name-color:#000000;
+  --price-color:#1D448E;
+  
+}
 
+html[data-theme='dark'] {
+  --background-color: #1E1E1E;
+
+  --title-color: #FFFFFF;
+  --placeholder-color:#868686;
+  
+  --border-product-color:#0B0B0B;
+  --name-color:#FFFFFF;
+  --price-color:#547AC5;
+  
+}
 
 body {
   margin: 0;
+  background-color: var(--background-color);
 }
 
 *:focus {
   outline: none;
 }
+
