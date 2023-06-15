@@ -20,9 +20,22 @@ export default defineConfig({
   build: {
     outDir: 'build', // Rename the output folder from "dist" to "build"
     assetsDir: 'static', // Rename the assets folder from "assets" to "static"
+    
     rollupOptions: {
       output: {
-        assetFileNames: '[ext]/[name].[hash][extname]', // Output assets with subfolders based on file extension
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name.endsWith('.css')) {
+          return `static/[ext]/[name].[hash][extname]`;
+          }
+          // end with .svg, .png, .jpg, .jpeg, .gif, .webp
+          else if (/\.(svg|png|jpe?g|gif|webp)$/i.test(assetInfo.name)) {
+            return `static/img/[name].[hash][extname]`;
+          }
+          else{
+            console.log(assetInfo);
+            return `static/js/[name].[hash][extname]`;
+          }
+        },
       },
     },
   },
