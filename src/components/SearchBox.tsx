@@ -11,7 +11,8 @@ interface SearchBoxProps {
 const SearchBox: React.FC<SearchBoxProps> = ({ onChange }) => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    onChange(value);
+    const sanitizedValue = value.replace(/[^a-zA-Z0-9\s]/g, '');
+    onChange(sanitizedValue);
   };
 
   return (

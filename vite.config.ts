@@ -32,7 +32,6 @@ export default defineConfig({
             return `static/img/[name].[hash][extname]`;
           }
           else{
-            console.log(assetInfo);
             return `static/js/[name].[hash][extname]`;
           }
         },
